@@ -8,8 +8,8 @@ def init_league():
     with open(path, 'r') as file:
         creds = json.load(file)
 
-    league = League(league_id=1142114727, 
-                    year=2025,
+    league = League(league_id=creds["league_id"], 
+                    year=creds["year"],
                     espn_s2=creds["espn_s2"],
                     swid=creds["swid"]
             )

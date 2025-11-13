@@ -64,7 +64,7 @@ def rank_division(teams):
     return ranked
 
 
-def monte_carlo(league, my_teams, iterations=1000):
+def monte_carlo(league, my_teams, iterations=10):
     for i in range(1, league.current_week):
         print(f"preloading week {i}...")
         matchups = league.scoreboard(i)
@@ -106,8 +106,11 @@ def monte_carlo(league, my_teams, iterations=1000):
             winners.append(ranked[0])
             ranked[0].sims_won_division += 1
             # print(f"{ranked[0].espn_team.division_name} division winner: {ranked[0].espn_team.team_name}")
-        if winners[0].final_wins == winners[1].final_wins:
-            standings.extend(break_ties(winners))
+        if len(winners) == 2:
+            if winners[0].final_wins == winners[1].final_wins:
+                standings.extend(break_ties(winners))
+            else:
+                standings.extend(winners)
         else:
             standings.extend(winners)
 
