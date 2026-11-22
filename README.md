@@ -8,6 +8,8 @@
 - Next, follow these steps to find your 'swid' and 'espn_s2' values - https://github.com/cwendt94/espn-api/discussions/150#discussioncomment-133615
 
 # Usage
-- Simply run 'python simulate.py' to simulate the remaining games of the season and produce a distribution of final standings.
-- Note that the function by default calculates head to head as primary tiebreaker. If your league uses total points, change the third argument in the monte_carlo() function call to False to skip over h2h calculations.
-- The default iterations is 1000, which currently takes about 15 minutes. To change this simply update the iterations argument in the monte_carlo() function.
+- Run `python simulate.py` to use the default Monte Carlo simulation with 1000 iterations.
+- Run `python simulate.py monte-carlo --iterations 5000` to choose the number of Monte Carlo iterations.
+- Run `python simulate.py exhaustive` to evaluate every possible result for every remaining matchup.
+- Exhaustive simulation grows as `2^n`, where `n` is the number of remaining games. It is practical for a small number of remaining matchups, such as two weeks with 12 games.
+- Head-to-head records are used for tiebreakers by default. Use `--points-tiebreaker` to use total points instead.

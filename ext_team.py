@@ -37,8 +37,8 @@ class ExtTeam:
     def reset_sim(self):
         self.final_wins = self.espn_team.wins
         self.final_losses = self.espn_team.losses
-        self.wins_vs = self.existing_wins_vs
-        self.losses_vs = self.existing_losses_vs
+        self.wins_vs = self.existing_wins_vs.copy()
+        self.losses_vs = self.existing_losses_vs.copy()
         self.h2h_pct = 0
 
     @property
